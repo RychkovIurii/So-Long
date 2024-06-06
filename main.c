@@ -6,32 +6,27 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/30 15:39:49 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/06 23:33:33 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/MLX42.h"
+#include "so_long.h"
 
-/* typedef struct mlx
+int	main(int argc, char **argv)
 {
-	void*		window;
-	void*		context;
-	int32_t		width;
-	int32_t		height;
-	double		delta_time;
-} */
+	if (argc != 2) {
+		printf("Usage: %s <map_file>\n", argv[0]);
+		return 1;
+	}
+	t_game game;
+	init_game(&game);
+	load_map(argv[1]);
 
-int	main(void)
-{
-	mlx_t	*mlx;
+	mlx_key_hook(game.mlx, &key_callback, &game);
+	mlx_loop(game.mlx);
 
-	mlx = mlx_init(1920, 1080, "Hello World!", false);
-	if (!mlx)
-		return (1);
-
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (0);
+	mlx_terminate(game.mlx);
+	return 0;
 }
 
 /* #include "MLX42/MLX42.h"
