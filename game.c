@@ -6,14 +6,15 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:22:31 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/06 23:43:18 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:48:32 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void init_game(t_game *game) {
-	game->mlx = mlx_init(800, 600, "So Long", true);
+void init_game(t_game *game)
+{
+	game->mlx = mlx_init(640, 480, "So Long", true);
 	if (!game->mlx) {
 		//Error handler
 		return ;

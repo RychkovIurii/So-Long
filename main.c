@@ -6,27 +6,56 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/06 23:33:33 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:19:13 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <fcntl.h>
+
+void	my_keyhook(mlx_key_data_t keydata, void	*param)
+{
+	t_game	*game;
+
+
+	game = (t_game *)param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(game->mlx);
+	else
+		handle_input(game, keydata.key);
+}
+
+void	load_map(char *filename, t_game *game)
+{
+	int		fd;
+	char	*mapline;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		//some error handler
+		return ;
+	}
+	mapline = 
+	close(fd);
+}
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2) {
-		printf("Usage: %s <map_file>\n", argv[0]);
-		return 1;
-	}
-	t_game game;
-	init_game(&game);
-	load_map(argv[1]);
+	t_game	game;
 
-	mlx_key_hook(game.mlx, &key_callback, &game);
+	if (argc != 2)
+	{
+		printf("Usage: %s <map_file>\n", argv[0]);
+		return (1);
+	}
+	init_game(&game);
+	load_map(argv[1], &game); // get_next_line
+	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
 
 	mlx_terminate(game.mlx);
-	return 0;
+	return (0);
 }
 
 /* #include "MLX42/MLX42.h"
