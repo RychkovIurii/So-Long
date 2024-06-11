@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 07:14:25 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:56:46 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,50 @@ static void	update_map_and_images(int x, int y, t_game *game)
 	game->player->instances[0].y = y * TILE_SIZE;
 }
 
-static void	handle_move(int x, int y, t_game *game)
+static void	collect_item(t_game *game, int x, int y)
 {
 	size_t	i;
 
+	i = 0;
+	game->current_score++;
+	while (i < game->collectible->count)
+	{
+		if (game->collectible->instances[i].x == x * TILE_SIZE
+			&& game->collectible->instances[i].y == y * TILE_SIZE)
+		{
+			game->collectible->instances[i].enabled = false;
+			break ;
+		}
+		i++;
+	}
+}
+
+static void	check_game_end_conditions(t_game *game, int x, int y)
+{
+	if (game->map[y][x] == 'E')
+	{
+		if (game->current_score != game->score)
+			printf("Collect all items first!\n");
+		else
+		{
+			printf("You win!\n");
+			game->gameover = 1;
+			mlx_close_window(game->mlx);
+		}
+	}
+}
+
+static void	handle_move(int x, int y, t_game *game)
+{
 	if (game->map[y][x] == '1')
 		return ;
-	else if (game->map[y][x] == 'E' && game->current_score != game->score)
-	{
-		printf("Collect all items first!\n");
-		return ;
-	}
-	else if (game->map[y][x] == 'E' && game->current_score == game->score)
-	{
-		printf("You win!\n");
-		game->gameover = 1;
-		mlx_close_window(game->mlx);
-		return ;
-	}
-	else if (game->map[y][x] == '0')
+	check_game_end_conditions(game, x, y);
+	if (game->map[y][x] == '0')
 		update_map_and_images(x, y, game);
 	else if (game->map[y][x] == 'C')
 	{
 		update_map_and_images(x, y, game);
-		game->current_score++;
-		i = 0;
-		while (i < game->collectible->count)
-		{
-			if (game->collectible->instances[i].x == x * TILE_SIZE
-				&& game->collectible->instances[i].y == y * TILE_SIZE)
-			{
-				game->collectible->instances[i].enabled = false;
-				break ;
-			}
-			i++;
-		}
+		collect_item(game, x, y);
 	}
 	game->player_x = x;
 	game->player_y = y;
