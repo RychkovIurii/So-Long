@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 08:12:54 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 08:43:39 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_game
 	int			score;
 	int			current_score;
 	char		**map;
-	int			map_width;
-	int			map_height;
+	size_t		map_width;
+	size_t		map_height;
 	int			steps;
 	int			gameover;
 }	t_game;

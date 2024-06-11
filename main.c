@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 08:11:18 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 08:48:20 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	mlx_delete_image(game.mlx, game.exit_img);
 	mlx_delete_image(game.mlx, game.player);
 
-	for (int i = 0; i < game.map_height; i++)
+	for (size_t i = 0; i < game.map_height; i++)
 		free(game.map[i]);
 	free(game.map);
 

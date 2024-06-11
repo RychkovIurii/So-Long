@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:56:43 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 08:10:10 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 08:49:56 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	load_map(t_game *game, const char *filename)
 	int		fd;
 	char	*mapline;
 	size_t	i;
-	size_t	map_size;
 
-	map_size = game->map_height;
-	game->map = malloc(sizeof(char *) * map_size);
+	game->map = malloc(sizeof(char *) * game->map_height);
 	if (!game->map)
 	{
 		fprintf(stderr, "Memory allocation error\n");
@@ -60,7 +58,7 @@ void	load_map(t_game *game, const char *filename)
 	}
 	i = 0;
 	mapline = get_next_line(fd);
-	while (i < map_size && mapline)
+	while (i < game->map_height && mapline)
 	{
 		game->map[i] = ft_strdup(mapline);
 		if (!game->map[i])
@@ -77,15 +75,14 @@ void	load_map(t_game *game, const char *filename)
 		mapline = get_next_line(fd);
 		i++;
 	}
-
 	close(fd);
 	game->map_width = strlen(game->map[0]);
 }
 
 void	parse_map(t_game *game)
 {
-	int	y;
-	int	x;
+	size_t	y;
+	size_t	x;
 
 	y = 0;
 	game->score = 0;
