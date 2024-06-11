@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:35:03 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/10 23:34:55 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:29:58 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,4 @@ void	load_images(t_game *game)
 	game->floor = load_image(game->mlx, "textures/floor.png");
 	game->collectible = load_image(game->mlx, "textures/collectible.png");
 	game->exit_img = load_image(game->mlx, "textures/exit.png");
-}
-
-void	add_instance(mlx_t *mlx, mlx_image_t *img, int x, int y)
-{
-	if (mlx_image_to_window(mlx, img, x * img->width, y * img->height) < 0)
-	{
-		fprintf(stderr, "Failed to add image instance to window\n");
-		exit(1);
-	}
 }

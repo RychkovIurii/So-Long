@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 09:09:31 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:30:02 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_game
 
 mlx_image_t	*load_image(mlx_t *mlx, const char *path);
 void		load_images(t_game *game);
-void		add_instance(mlx_t *mlx, mlx_image_t *img, int x, int y);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		get_map_height(t_game *game, const char *filename);
 void		load_map(t_game *game, const char *filename);

@@ -6,11 +6,41 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:13:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 09:17:35 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:30:00 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	add_instance(mlx_t *mlx, mlx_image_t *img, int x, int y)
+{
+	if (mlx_image_to_window(mlx, img, x * img->width, y * img->height) < 0)
+	{
+		fprintf(stderr, "Failed to add image instance to window\n");
+		exit(1);
+	}
+}
+
+static void	handle_map_element(t_game *game, char elem, size_t x, size_t y)
+{
+	if (elem == '1')
+		add_instance(game->mlx, game->wall, x, y);
+	else if (elem == '0')
+		add_instance(game->mlx, game->floor, x, y);
+	else if (elem == 'C')
+	{
+		add_instance(game->mlx, game->collectible, x, y);
+		game->score++;
+	}
+	else if (elem == 'E')
+		add_instance(game->mlx, game->exit_img, x, y);
+	else if (elem == 'P')
+	{
+		add_instance(game->mlx, game->player, x, y);
+		game->player_x = x;
+		game->player_y = y;
+	}
+}
 
 void	parse_map(t_game *game)
 {
@@ -24,23 +54,7 @@ void	parse_map(t_game *game)
 		x = 0;
 		while (x < game->map_width)
 		{
-			if (game->map[y][x] == '1')
-				add_instance(game->mlx, game->wall, x, y);
-			else if (game->map[y][x] == '0')
-				add_instance(game->mlx, game->floor, x, y);
-			else if (game->map[y][x] == 'C')
-			{
-				add_instance(game->mlx, game->collectible, x, y);
-				game->score++;
-			}
-			else if (game->map[y][x] == 'E')
-				add_instance(game->mlx, game->exit_img, x, y);
-			else if (game->map[y][x] == 'P')
-			{
-				add_instance(game->mlx, game->player, x, y);
-				game->player_x = x;
-				game->player_y = y;
-			}
+			handle_map_element(game, game->map[y][x], x, y);
 			x++;
 		}
 		y++;
