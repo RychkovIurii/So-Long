@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/10 23:31:31 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 07:14:25 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ static void	update_map_and_images(int x, int y, t_game *game)
 static void	handle_move(int x, int y, t_game *game)
 {
 	size_t	i;
-	
+
 	if (game->map[y][x] == '1')
-		return;
+		return ;
 	else if (game->map[y][x] == 'E' && game->current_score != game->score)
 	{
 		printf("Collect all items first!\n");
-		return;
+		return ;
 	}
 	else if (game->map[y][x] == 'E' && game->current_score == game->score)
 	{
 		printf("You win!\n");
 		game->gameover = 1;
 		mlx_close_window(game->mlx);
-		return;
+		return ;
 	}
 	else if (game->map[y][x] == '0')
 		update_map_and_images(x, y, game);
@@ -47,11 +47,11 @@ static void	handle_move(int x, int y, t_game *game)
 		i = 0;
 		while (i < game->collectible->count)
 		{
-			if (game->collectible->instances[i].x == x * TILE_SIZE &&
-				game->collectible->instances[i].y == y * TILE_SIZE)
+			if (game->collectible->instances[i].x == x * TILE_SIZE
+				&& game->collectible->instances[i].y == y * TILE_SIZE)
 			{
 				game->collectible->instances[i].enabled = false;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -72,7 +72,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	x = game->player_x;
 	y = game->player_y;
 	if (game->gameover)
-		return;
+		return ;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(game->mlx);
 	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
