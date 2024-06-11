@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 08:43:39 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:09:31 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_game
 	mlx_image_t	*floor;
 	mlx_image_t	*collectible;
 	mlx_image_t	*exit_img;
+	int			fd;
 	int			player_x;
 	int			player_y;
 	int			score;

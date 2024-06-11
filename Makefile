@@ -6,12 +6,12 @@
 #    By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 11:25:45 by irychkov          #+#    #+#              #
-#    Updated: 2024/06/11 08:13:13 by irychkov         ###   ########.fr        #
+#    Updated: 2024/06/11 09:17:16 by irychkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-SRCS = main.c graphics.c control.c map_loading.c get_next_line_bonus.c get_next_line_utils_bonus.c
+SRCS = main.c graphics.c control.c map_loading.c map_parsing.c get_next_line_bonus.c get_next_line_utils_bonus.c
 OBJS = $(SRCS:.c=.o)
 MLX_DIR = ./MLX42
 MLX_HEADER = -I $(MLX_DIR)/include

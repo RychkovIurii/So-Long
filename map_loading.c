@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:56:43 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 08:49:56 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 09:16:23 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,80 +37,64 @@ void	get_map_height(t_game *game, const char *filename)
 	game->map_height = map_size;
 }
 
-void	load_map(t_game *game, const char *filename)
+static int	init_map(t_game *game, const char *filename)
 {
-	int		fd;
-	char	*mapline;
-	size_t	i;
-
 	game->map = malloc(sizeof(char *) * game->map_height);
 	if (!game->map)
 	{
 		fprintf(stderr, "Memory allocation error\n");
-		return ;
+		return (0);
 	}
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	game->fd = open(filename, O_RDONLY);
+	if (game->fd < 0)
 	{
 		fprintf(stderr, "Failed to open map file\n");
 		free(game->map);
-		return ;
+		return (0);
 	}
+	return (1);
+}
+
+static int	read_map_lines(t_game *game)
+{
+	char	*mapline;
+	size_t	i;
+
 	i = 0;
-	mapline = get_next_line(fd);
+	mapline = get_next_line(game->fd);
 	while (i < game->map_height && mapline)
 	{
 		game->map[i] = ft_strdup(mapline);
 		if (!game->map[i])
 		{
 			fprintf(stderr, "Memory allocation error\n");
-			close(fd);
-			while (i > 0)
-				free(game->map[--i]);
-			free(game->map);
 			free(mapline);
-			return ;
+			return (0);
 		}
 		free(mapline);
-		mapline = get_next_line(fd);
+		mapline = get_next_line(game->fd);
 		i++;
 	}
-	close(fd);
-	game->map_width = strlen(game->map[0]);
+	return (1);
 }
 
-void	parse_map(t_game *game)
+static void	cleanup_map_on_error(t_game *game)
 {
-	size_t	y;
-	size_t	x;
+	close(game->fd);
+	while (game->map && --game->map_height >= 0)
+		free(game->map[game->map_height]);
+	free(game->map);
+}
 
-	y = 0;
-	game->score = 0;
-	while (y < game->map_height)
+void	load_map(t_game *game, const char *filename)
+{
+	if (!init_map(game, filename))
+		return ;
+	if (!read_map_lines(game))
 	{
-		x = 0;
-		while (x < game->map_width)
-		{
-			if (game->map[y][x] == '1')
-				add_instance(game->mlx, game->wall, x, y);
-			else if (game->map[y][x] == '0')
-				add_instance(game->mlx, game->floor, x, y);
-			else if (game->map[y][x] == 'C')
-			{
-				add_instance(game->mlx, game->collectible, x, y);
-				game->score++;
-			}
-			else if (game->map[y][x] == 'E')
-				add_instance(game->mlx, game->exit_img, x, y);
-			else if (game->map[y][x] == 'P')
-			{
-				add_instance(game->mlx, game->player, x, y);
-				game->player_x = x;
-				game->player_y = y;
-			}
-			x++;
-		}
-		y++;
+		cleanup_map_on_error(game);
+		return ;
 	}
-	game->current_score = 0;
+	close(game->fd);
+	game->map_width = strlen(game->map[0]);
 }
