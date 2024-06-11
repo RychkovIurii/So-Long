@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:54:26 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 12:12:49 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:18:15 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,25 @@ static int	ft_validate_file_ext(char *filename)
 	return (0);
 }
 
-static void	check_one_char(char c, int *exits, int *players, int *collectibles)
+static void	check_one_char(char c, t_game *game)
 {
 	if (c == 'E')
-		*exits += 1;
+		game->exits += 1;
 	else if (c == 'P')
-		*players += 1;
+		game->players += 1;
 	else if (c == 'C')
-		*collectibles += 1;
+		game->collectibles += 1;
 }
 
 static int	ft_check_chars(t_game *game)
 {
 	size_t	h;
 	size_t	w;
-	int		exits;
-	int		players;
-	int		collectibles;
 
 	h = 0;
-	exits = 0;
-	players = 0;
-	collectibles = 0;
+	game->exits = 0;
+	game->players = 0;
+	game->collectibles = 0;
 	while (h < game->map_height)
 	{
 		w = 0;
@@ -54,12 +51,12 @@ static int	ft_check_chars(t_game *game)
 		{
 			if (ft_strchr("01CPE", game->map[h][w]) == NULL)
 				return (0);
-			check_one_char(game->map[h][w], &exits, &players, &collectibles);
+			check_one_char(game->map[h][w], game);
 			w++;
 		}
 		h++;
 	}
-	if (collectibles < 1 || players != 1 || exits != 1)
+	if (game->collectibles < 1 || game->players != 1 || game->exits != 1)
 		return (0);
 	return (1);
 }

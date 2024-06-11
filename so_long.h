@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 12:21:59 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:36:58 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,25 @@ typedef struct s_game
 	size_t		map_height;
 	int			steps;
 	int			gameover;
+	int			exits;
+	int			players;
+	int			collectibles;
 }	t_game;
+
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_position;
+
+typedef struct s_queue
+{
+	t_position	*items;
+	int			capacity;
+	int			front;
+	int			rear;
+	int			size;
+}	t_queue;
 
 mlx_image_t	*load_image(mlx_t *mlx, const char *path);
 void		load_images(t_game *game);
