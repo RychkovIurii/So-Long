@@ -6,26 +6,15 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:18:23 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 11:13:57 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:20:32 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_validate_file_ext(char *filename)
-{
-	char	*ext;
-
-	ext = NULL;
-	ext = ft_strrchr(filename, '.');
-	if (ext == NULL)
-		return (0);
-	if ((ft_strncmp(".ber\0", ext, 5)) == 0)
-		return (1);
-	return (0);
-}
+#include "so_long.h"
 
 static int	ft_validate_side_walls(t_game *game)
 {
-	int	h;
+	size_t	h;
 
 	h = 1;
 	while (h < game->map_height)
@@ -34,73 +23,64 @@ static int	ft_validate_side_walls(t_game *game)
 			return (0);
 		else if (game->map[h][game->map_width - 1] != '1')
 			return (0);
-		h += 1;
+		h++;
 	}
 	return (1);
 }
 
 static int	ft_valid_top_wall(t_game *game)
 {
-	int	w;
+	size_t	w;
 
 	w = 0;
 	while (w < game->map_width)
 	{
 		if (game->map[0][w] != '1')
 			return (0);
-		w += 1;
+		w++;
 	}
 	return (1);
 }
 
 static int	ft_valid_bottom_wall(t_game *game)
 {
-	int	w;
+	size_t	w;
 
 	w = 0;
 	while (w < game->map_width)
 	{
 		if (game->map[game->map_height - 1][w] != '1')
 			return (0);
-		w += 1;
+		w++;
 	}
 	return (1);
 }
 
-static int	ft_check_chars(t_game *game)
+static int	ft_validate_rectangle(t_game *game)
 {
-	int	h;
-	int	w;
-	int	exits;
-	int	players;
-	int	collectibles;
+	size_t	h;
+	size_t	w;
+	size_t	len;
 
 	h = 0;
-	exits = 0;
-	players = 0;
-	collectibles = 0;
-	while (h < game->height)
+	len = ft_strlen(game->map[0]);
+	while (h < game->map_height)
 	{
-		w = 0;
-		while (game->map[h][w] != '\n' && game->map[h][w] != '\0')
-		{
-			if (ft_strchr(const char *s, int c) == NULL)
-				return (0);
-			if (game->map[h][w] == 'E')
-				exits += 1;
-			else if (game->map[h][w] == 'P')
-				players += 1;
-			else if (game->map[h][w] == 'C')
-				collectibles += 1;
-			w++;
-		}
+		if (len != (ft_strlen(game->map[h])))
+			return (0);
 		h++;
 	}
-	if (collectibles < 1 || players != 1 || exits != 1)
+	return (1);
+}
+
+int	ft_validate_walls(t_game *game)
+{
+	if (!ft_validate_rectangle(game) || !ft_validate_side_walls(game))
+		return (0);
+	else if (!ft_valid_top_wall(game) || !ft_valid_bottom_wall(game))
 		return (0);
 	return (1);
 }
-
 
 //The map must be rectangular.
 //Empty space in the middle.
