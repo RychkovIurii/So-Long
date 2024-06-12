@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:56:43 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 16:04:35 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 23:16:52 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	get_map_height(t_game *game, const char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		fprintf(stderr, "Failed to open map file\n");
-		return ;
-	}
+		show_error(game, "Error\nFD error");
 	map_size = 0;
 	mapline = get_next_line(fd);
 	while (mapline)
@@ -33,29 +30,20 @@ void	get_map_height(t_game *game, const char *filename)
 		mapline = get_next_line(fd);
 	}
 	close(fd);
-
 	game->map_height = map_size;
 }
 
-static int	init_map(t_game *game, const char *filename)
+static void	init_map(t_game *game, const char *filename)
 {
 	game->map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
-	{
-		fprintf(stderr, "Memory allocation error\n");
-		return (0);
-	}
+		show_error(game, "Error\nMemory allocation error\n");
 	game->fd = open(filename, O_RDONLY);
 	if (game->fd < 0)
-	{
-		fprintf(stderr, "Failed to open map file\n");
-		free(game->map);
-		return (0);
-	}
-	return (1);
+		show_error(game, "Error\nFailed to open map file\n");
 }
 
-static int	read_map_lines(t_game *game)
+static void	read_map_lines(t_game *game)
 {
 	char	*mapline;
 	size_t	i;
@@ -65,37 +53,23 @@ static int	read_map_lines(t_game *game)
 	while (i < game->map_height && mapline)
 	{
 		game->map[i] = ft_strtrim(mapline, "\n");
-		printf("%zu- len\n", ft_strlen(game->map[i]));
 		if (!game->map[i])
 		{
-			fprintf(stderr, "Memory allocation error\n");
 			free(mapline);
-			return (0);
+			show_error(game, "Error\nMemory allocation error\n");
 		}
 		free(mapline);
 		mapline = get_next_line(game->fd);
 		i++;
 	}
-	return (1);
-}
-
-static void	cleanup_map_on_error(t_game *game)
-{
-	close(game->fd);
-	while (game->map && --game->map_height >= 0)
-		free(game->map[game->map_height]);
-	free(game->map);
 }
 
 void	load_map(t_game *game, const char *filename)
 {
-	if (!init_map(game, filename))
-		return ;
-	if (!read_map_lines(game))
-	{
-		cleanup_map_on_error(game);
-		return ;
-	}
+	init_map(game, filename);
+	read_map_lines(game);
 	close(game->fd);
 	game->map_width = ft_strlen(game->map[0]);
+	if (!game->map)
+		show_error(game, "Error\nMap loading error");
 }

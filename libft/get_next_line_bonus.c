@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:25:07 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/17 17:21:18 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 21:27:34 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*ft_remove_line(char *stack, char *line)
 	stack_len = ft_strlen_buf(stack);
 	if (line_len >= stack_len)
 		return (free_stuff(&stack));
-	new_stack = ft_strdup(stack + line_len);
+	new_stack = ft_strdup_buf(stack + line_len);
 	free_stuff(&stack);
 	return (new_stack);
 }

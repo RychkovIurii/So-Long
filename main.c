@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 18:00:16 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 23:22:39 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	}
 	if (!ft_validate_file_ext(argv[1]))
 	{
-		printf("Invalid extension. File must end with %s.ber\n", argv[0]);
+		printf("Error\nExtension. File must end with %s.ber\n", argv[1]);
 		return (1);
 	}
 	game.mlx = mlx_init(960, 640, "So Long", true);
@@ -32,14 +32,12 @@ int	main(int argc, char **argv)
 		show_error(&game, "Init error");
 	get_map_height(&game, argv[1]);
 	load_map(&game, argv[1]);
-	if (!game.map)
-		show_error(&game, "Map loading error");
 	if (!ft_check_chars(&game))
-		show_error(&game, "Map contains invalid characters\n");
+		show_error(&game, "Error\nMap contains invalid characters\n");
 	load_images(&game);
 	parse_map(&game);
 	if (!ft_validate_walls(&game))
-		show_error(&game, "Map validation failed\n");
+		show_error(&game, "Error\nMap validation failed\n");
 /* 	t_position player_start = {game.player_x, game.player_y};
 	if (!validate_path(&game, player_start))
 	{

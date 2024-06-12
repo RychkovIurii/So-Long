@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:54:26 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 16:04:38 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 23:20:16 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	ft_check_chars(t_game *game)
 	size_t	w;
 
 	h = 0;
-	game->exits = 0;
-	game->players = 0;
-	game->collectibles = 0;
 	while (h < game->map_height)
 	{
 		w = 0;

@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:25:04 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/17 17:11:46 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 21:26:46 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ft_strlcat_buf(char *stack, char *buffer, ssize_t bytes_read)
 	return (new_stack);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_buf(const char *s1)
 {
 	size_t	i;
 	char	*dst;

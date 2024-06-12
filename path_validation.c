@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:28:09 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 17:06:31 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 21:44:12 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ static char	**create_temp_map(t_game *game)
 		temp_map[i] = ft_strdup(game->map[i]);
 		if (!temp_map[i])
 		{
-			for (size_t j = 0; j < i; j++)
-				free(temp_map[j]);
+			while (i > 0)
+			{
+				free(temp_map[i - 1]);
+				i--;
+			}
 			free(temp_map);
 			return (NULL);
 		}
+		i++;
 	}
 	temp_map[game->map_height] = NULL;
 	return (temp_map);

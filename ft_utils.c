@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:25:58 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 18:03:34 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 22:50:52 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	cleanup_game(t_game *game)
 void	show_error(t_game *game, char *message)
 {
 	cleanup_game(game);
-	printf("Error\n%s\n", message);
+	ft_printf("Error\n%s\n", message);
 	exit(1);
 }
