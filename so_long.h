@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 13:26:02 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:01:06 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ int			ft_validate_walls(t_game *game);
 int			validate_path(t_game *game, t_position position);
 int			ft_check_chars(t_game *game);
 int			ft_validate_file_ext(char *filename);
+void		show_error(t_game *game, char *message);
+void		cleanup_game(t_game *game);
 
 #endif
