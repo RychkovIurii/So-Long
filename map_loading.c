@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:56:43 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 09:16:23 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:04:35 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_map_height(t_game *game, const char *filename)
 
 static int	init_map(t_game *game, const char *filename)
 {
-	game->map = malloc(sizeof(char *) * game->map_height);
+	game->map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
 	{
 		fprintf(stderr, "Memory allocation error\n");
@@ -64,7 +64,8 @@ static int	read_map_lines(t_game *game)
 	mapline = get_next_line(game->fd);
 	while (i < game->map_height && mapline)
 	{
-		game->map[i] = ft_strdup(mapline);
+		game->map[i] = ft_strtrim(mapline, "\n");
+		printf("%zu- len\n", ft_strlen(game->map[i]));
 		if (!game->map[i])
 		{
 			fprintf(stderr, "Memory allocation error\n");
@@ -96,5 +97,5 @@ void	load_map(t_game *game, const char *filename)
 		return ;
 	}
 	close(game->fd);
-	game->map_width = strlen(game->map[0]);
+	game->map_width = ft_strlen(game->map[0]);
 }
