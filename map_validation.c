@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:18:23 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 12:56:53 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:04:37 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static int	ft_valid_bottom_wall(t_game *game)
 static int	ft_validate_rectangle(t_game *game)
 {
 	size_t	h;
-	size_t	w;
 	size_t	len;
 
 	h = 0;

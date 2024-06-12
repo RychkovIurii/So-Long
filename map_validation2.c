@@ -6,13 +6,13 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:54:26 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 14:18:15 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:04:38 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_validate_file_ext(char *filename)
+int	ft_validate_file_ext(char *filename)
 {
 	char	*ext;
 
@@ -35,7 +35,7 @@ static void	check_one_char(char c, t_game *game)
 		game->collectibles += 1;
 }
 
-static int	ft_check_chars(t_game *game)
+int	ft_check_chars(t_game *game)
 {
 	size_t	h;
 	size_t	w;
