@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/11 14:36:58 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/12 13:26:02 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 
 # include <MLX42/MLX42.h>
 # include "get_next_line_bonus.h"
+# include "libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
 
 # define TILE_SIZE 32
+
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_position;
 
 typedef struct s_game
 {
@@ -30,6 +37,7 @@ typedef struct s_game
 	mlx_image_t	*floor;
 	mlx_image_t	*collectible;
 	mlx_image_t	*exit_img;
+	t_position	position;
 	int			fd;
 	int			player_x;
 	int			player_y;
@@ -45,21 +53,6 @@ typedef struct s_game
 	int			collectibles;
 }	t_game;
 
-typedef struct s_position
-{
-	int	x;
-	int	y;
-}	t_position;
-
-typedef struct s_queue
-{
-	t_position	*items;
-	int			capacity;
-	int			front;
-	int			rear;
-	int			size;
-}	t_queue;
-
 mlx_image_t	*load_image(mlx_t *mlx, const char *path);
 void		load_images(t_game *game);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
@@ -67,5 +60,8 @@ void		get_map_height(t_game *game, const char *filename);
 void		load_map(t_game *game, const char *filename);
 void		parse_map(t_game *game);
 int			ft_validate_walls(t_game *game);
+int			validate_path(t_game *game, t_position position);
+int			ft_check_chars(t_game *game);
+int			ft_validate_file_ext(char *filename);
 
 #endif
