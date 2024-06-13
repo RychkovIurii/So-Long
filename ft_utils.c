@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:25:58 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 22:50:52 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:39:31 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@ void	cleanup_game(t_game *game)
 			mlx_delete_image(game->mlx, game->exit_img);
 		if (game->player)
 			mlx_delete_image(game->mlx, game->player);
-		i = 0;
+	}
+	i = 0;
+	if (game->map)
+	{
 		while (game->map[i])
 			free(game->map[i++]);
 		free(game->map);
-		mlx_terminate(game->mlx);
+		game->map = NULL;
 	}
+	mlx_terminate(game->mlx);
+	game->mlx = NULL;
 }
 
 void	show_error(t_game *game, char *message)
@@ -41,4 +46,21 @@ void	show_error(t_game *game, char *message)
 	cleanup_game(game);
 	ft_printf("Error\n%s\n", message);
 	exit(1);
+}
+
+void	map_handler(t_game *game, char *filename)
+{
+	t_position	player_start;
+
+	get_map_height(game, filename);
+	load_map(game, filename);
+	if (!ft_check_chars(game))
+		show_error(game, "Map contains invalid characters");
+	load_images(game);
+	parse_map(game);
+	if (!ft_validate_walls(game))
+		show_error(game, "Map validation failed");
+	player_start = (t_position){game->player_x, game->player_y};
+	if (!validate_path(game, player_start))
+		show_error(game, "No valid path");
 }
