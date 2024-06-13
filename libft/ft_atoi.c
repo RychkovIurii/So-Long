@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 22:39:01 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:01:05 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/05/03 10:01:25 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result);
 }
-
-/* 
-#include <stdlib.h>
-#include <stdio.h>
-int main()
-{
-	char str[] = "   	-808";
- 
-	int result = ft_atoi(str);
-	int result2 = atoi(str);
-	printf("my 		= %d\n", result);
-	printf("original 	= %d\n", result2);
-
-	return 0;
-} */

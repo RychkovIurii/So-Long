@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 12:31:54 by irychkov          #+#    #+#             */
-/*   Updated: 2024/04/29 17:45:00 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:37:47 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,3 @@ void	*ft_calloc(size_t count, size_t size)
 		ft_bzero(b, total);
 	return (b);
 }
-
-/* 
-int main () {
-	int i, n;
-	int *a;
-	int *a2;
-
-	printf("Number of elements to be entered:");
-	scanf("%d",&n);
-
-	a = (int*)calloc(n, sizeof(int));
-	for( i=0 ; i < n ; i++ ) {
-		printf("%d ",a[i]);
-	}
-	a2 = (int*)ft_calloc(n, sizeof(int));
-	for( i=0 ; i < n ; i++ ) {
-		printf("%d ",a2[i]);
-	}
-	free( a );
-	free( a2 );
-	
-	return(0);
-} */

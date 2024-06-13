@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:12:10 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:22:28 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:39:34 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(result, &s1[start], end - start + 2);
 	return (result);
 }
-
-/* 
-int	main(void)
-{
-	char	str[30] = " - + -   Hello Hive + ";
-	char	str1[5] = "AB";
-	char	trim[7] = " -+";
-	char	trim1[7] = "BA";
-	char	*result;
-
-	result = ft_strtrim(str, trim);
-	printf("%s\n", result);
-	result = ft_strtrim(str1, trim1);
-	printf("%s\n", result);
-	free(result);
-} */

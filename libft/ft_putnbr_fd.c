@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:44:35 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:15:07 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:54:56 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,3 @@ void	ft_putnbr_fd(int n, int fd)
 	c = n % 10 + '0';
 	write(fd, &c, 1);
 }
-
-/* 
-#include <fcntl.h>
-
-int main() {
-	int fd = open("test_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1) {
-		perror("Error opening file");
-		return 1;
-	}
-	ft_putnbr_fd(-2147483648, fd);
-	close(fd);
-
-	char buffer[12];
-	fd = open("test_output.txt", O_RDONLY);
-	if (fd == -1) {
-		perror("Error opening file");
-		return 1;
-	}
-	int bytes_read = read(fd, buffer, 11);
-	buffer[bytes_read] = '\0';
-
-	printf("Expected:\n-2147483648\nGot:\n%s", buffer);
-	close(fd);
-
-	return 0;
-} */

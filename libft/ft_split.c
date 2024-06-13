@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 12:05:53 by irychkov          #+#    #+#             */
-/*   Updated: 2024/04/21 15:34:05 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:55:13 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_helper(s, c, i, result));
 }
-/* 
-int	main(void)
-{
-	char	str[20] = "b    hello hive ";
-	char	c = ' ';
-	size_t	counter;
-	char	**result;
-
-	counter = ft_strcounter(str, c);
-	printf("%zu\n", counter);
-	result = ft_split(str, c);
-	if (result)
-	{
-		for (size_t i = 0; result[i]; i++)
-			printf("%s\n", result[i]);
-		for (size_t i = 0; result[i]; i++)
-			free(result[i]);
-		free(result);
-	}
-	return 0;
-} */

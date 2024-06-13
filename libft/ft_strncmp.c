@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:19:56 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:19:14 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:36:50 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	else
 		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-/* 
-int	main(void)
-{
-	size_t	n;
-	char	str1[] = "abc\0";
-	char	str2[] = "abc\200";
-
-	n = 5;
-	printf("%d\n", ft_strncmp(str1, str2, n));
-	printf("%d\n", strncmp(str1, str2, n));
-} */

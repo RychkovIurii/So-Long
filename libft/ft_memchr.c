@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:03:50 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:09:18 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:54:08 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-/* 
-int main () {
-	const char str[] = "Hello.Hive.Five";
-	const char ch = '.';
-	char *result1;
-	char *result2;
-
-	result1 = memchr(str, ch, strlen(str));
-	result2 = ft_memchr(str, ch, strlen(str));
-
-	printf("String after |%c| is - |%s|\n", ch, result1);
-	printf("String after |%c| is - |%s|\n", ch, result2);
-
-	return(0);
-} */

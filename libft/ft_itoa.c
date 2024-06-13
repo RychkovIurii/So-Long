@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:35:21 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:04:44 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:53:33 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,3 @@ char	*ft_itoa(int n)
 		return (NULL);
 	return (ft_helper(n, len, i, result));
 }
-
-/* 
-int	main(void)
-{
-	ft_digits_len(-11);
-	printf("%s\n", ft_itoa(-11));
-	ft_digits_len(-4443);
-	printf("%s\n", ft_itoa(-4443));
-	ft_digits_len(-1);
-	printf("%s\n", ft_itoa(-1));
-	ft_digits_len(0);
-	printf("%s\n", ft_itoa(0));
-	ft_digits_len(101);
-	printf("%s\n", ft_itoa(101));
-	ft_digits_len(-2147483648);
-	printf("%s\n", ft_itoa(-2147483648));
-
-	return (0);
-} */

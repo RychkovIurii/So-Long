@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:35:48 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:19:54 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:36:01 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,3 @@ size_t	ft_strlen(const char	*str)
 	}
 	return (i);
 }
-
-/* 
-#include <unistd.h>
-int main(void)
-{
-	char *str = "Hello";
-	unsigned int i;
-
-	i = ft_strlen(str);
-	write(1, &i, 1);
-} */

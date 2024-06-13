@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 23:06:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/05/03 12:19:35 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:55:54 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
-/* 
-char	test_toupper(unsigned int i, char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return c - 32;
-	else
-		return c;
-}
-
-int	main(void)
-{
-	char str[12] = "Hello Hive!";
-	char *result;
-	result = ft_strmapi(str, test_toupper);
-	printf("%s", result);
-	free(result);
-	return (0);
-} */
