@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:50:44 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:31:03 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nExtension. File %s must end with .ber\n", argv[1]);
 		return (1);
 	}
-	game.mlx = mlx_init(960, 640, "So Long", true);
+	game.mlx = mlx_init(1920, 1280, "So Long", true);
 	if (!game.mlx)
 		show_error(&game, "Init error");
 	map_handler(&game, argv[1]);

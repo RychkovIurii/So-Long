@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:25:58 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:39:31 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:24:24 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	map_handler(t_game *game, char *filename)
 	get_map_height(game, filename);
 	load_map(game, filename);
 	if (!ft_check_chars(game))
-		show_error(game, "Map contains invalid characters");
+		show_error(game, "Map contains invalid characters or amount");
 	load_images(game);
 	parse_map(game);
 	if (!ft_validate_walls(game))

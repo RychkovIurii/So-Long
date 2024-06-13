@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:56:43 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:25:10 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:57:35 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	get_map_height(t_game *game, const char *filename)
 		mapline = get_next_line(fd);
 	}
 	close(fd);
+	if (map_size < 3)
+		show_error(game, "Mapsize error");
 	game->map_height = map_size;
 }
 

@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:51:35 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:44:42 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ static void	collect_item(t_game *game, int x, int y)
 	}
 }
 
-static void	check_game_end_conditions(t_game *game, int x, int y)
+static int	check_game_end_conditions(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == 'E')
 	{
 		if (game->current_score != game->score)
+		{
 			ft_printf("Collect all items first!\n");
+			return (0);
+		}
 		else
 		{
 			ft_printf("You win!\n");
@@ -51,13 +54,15 @@ static void	check_game_end_conditions(t_game *game, int x, int y)
 			mlx_close_window(game->mlx);
 		}
 	}
+	return (1);
 }
 
 static void	handle_move(int x, int y, t_game *game)
 {
 	if (game->map[y][x] == '1')
 		return ;
-	check_game_end_conditions(game, x, y);
+	if (!check_game_end_conditions(game, x, y))
+		return ;
 	if (game->map[y][x] == '0')
 		update_map_and_images(x, y, game);
 	else if (game->map[y][x] == 'C')
