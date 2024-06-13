@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:28:09 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 21:44:12 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:25:53 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**create_temp_map(t_game *game)
 {
-	size_t		i;
+	size_t	i;
 	char	**temp_map;
 
 	temp_map = malloc(sizeof(char *) * (game->map_height + 1));
@@ -40,7 +40,7 @@ static char	**create_temp_map(t_game *game)
 	return (temp_map);
 }
 
-static int	explore_path(t_game *game,char **temp_map, t_position position)
+static int	explore_path(t_game *game, char **temp_map, t_position position)
 {
 	static int	collect = 0;
 	static int	exit_found = 0;
@@ -64,14 +64,16 @@ static int	explore_path(t_game *game,char **temp_map, t_position position)
 int	validate_path(t_game *game, t_position position)
 {
 	int		result;
+	size_t	i;
 	char	**temp;
 
 	temp = create_temp_map(game);
 	if (!temp)
-		return (0);	//not sure what type of errors
+		show_error(game, "Memory allocation error");
 	result = explore_path(game, temp, position);
-	for (size_t i = 0; i < game->map_height; i++)
-		free(temp[i]);
+	i = 0;
+	while (i < game->map_height)
+		free(temp[i++]);
 	free(temp);
 	return (result);
 }

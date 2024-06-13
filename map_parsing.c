@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:13:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 23:18:32 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:47:28 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	add_instance(t_game *game, mlx_image_t *img, int x, int y)
 {
-	if (mlx_image_to_window(game->mlx, img, x * img->width, y * img->height) < 0)
-		show_error(game, "Error\nFailed to add image instance to window");
+	if (mlx_image_to_window(game->mlx, img,
+			x * img->width, y * img->height) < 0)
+		show_error(game, "Failed to add image instance to window");
 }
 
 static void	handle_map_element(t_game *game, char elem, size_t x, size_t y)
