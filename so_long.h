@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 22:56:36 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:50:12 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 # include <MLX42/MLX42.h>
 # include "get_next_line_bonus.h"
 # include "libft.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 # include <fcntl.h>
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 typedef struct s_position
 {
@@ -65,5 +62,6 @@ int			ft_check_chars(t_game *game);
 int			ft_validate_file_ext(char *filename);
 void		show_error(t_game *game, char *message);
 void		cleanup_game(t_game *game);
+void		map_handler(t_game *game, char *filename);
 
 #endif
