@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 23:02:41 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:51:35 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static void	check_game_end_conditions(t_game *game, int x, int y)
 	if (game->map[y][x] == 'E')
 	{
 		if (game->current_score != game->score)
-			printf("Collect all items first!\n");
+			ft_printf("Collect all items first!\n");
 		else
 		{
-			printf("You win!\n");
+			ft_printf("You win!\n");
 			game->gameover = 1;
 			mlx_close_window(game->mlx);
 		}
@@ -68,7 +68,7 @@ static void	handle_move(int x, int y, t_game *game)
 	game->player_x = x;
 	game->player_y = y;
 	game->steps++;
-	printf("Steps: %d\n", game->steps);
+	ft_printf("Steps: %d\n", game->steps);
 }
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
@@ -84,12 +84,12 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		return ;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(game->mlx);
-	else if (keydata.key == MLX_KEY_Q && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 		handle_move(x, y - 1, game);
-	else if (keydata.key == MLX_KEY_Z && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
 		handle_move(x, y + 1, game);
-	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
 		handle_move(x - 1, y, game);
-	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		handle_move(x + 1, y, game);
 }
