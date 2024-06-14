@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:13:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 13:50:12 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:39:01 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	handle_map_element(t_game *game, char elem, size_t x, size_t y)
 	else if (elem == 'P')
 	{
 		add_instance(game, game->floor, x, y);
-		add_instance(game, game->player, x, y);
 		game->player_x = x;
 		game->player_y = y;
 	}
@@ -57,4 +56,5 @@ void	parse_map(t_game *game)
 		}
 		y++;
 	}
+	add_instance(game, game->player, game->player_x, game->player_y);
 }
