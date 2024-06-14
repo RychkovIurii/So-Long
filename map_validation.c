@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:18:23 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 16:04:37 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:49:05 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,12 @@ static int	ft_validate_rectangle(t_game *game)
 	return (1);
 }
 
-int	ft_validate_walls(t_game *game)
+void	ft_validate_walls(t_game *game)
 {
 	if (!ft_validate_rectangle(game))
-		return (0);
+		show_error(game, "Map isn't a rectangle");
 	if (!ft_validate_side_walls(game))
-		return (0);
+		show_error(game, "Map doesn't have a wall around");
 	else if (!ft_valid_top_wall(game) || !ft_valid_bottom_wall(game))
-		return (0);
-	return (1);
+		show_error(game, "Map doesn't have a wall around");
 }

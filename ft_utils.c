@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:25:58 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 11:38:36 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:49:29 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	map_handler(t_game *game, char *filename)
 	ft_check_chars(game);
 	load_images(game);
 	parse_map(game);
-	if (!ft_validate_walls(game))
-		show_error(game, "Map validation failed");
+	ft_validate_walls(game);
 	player_start = (t_position){game->player_x, game->player_y};
 	if (!validate_path(game, player_start))
 		show_error(game, "No valid path");
