@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:13:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:47:28 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:14:29 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ static void	handle_map_element(t_game *game, char elem, size_t x, size_t y)
 	else if (elem == '0')
 		add_instance(game, game->floor, x, y);
 	else if (elem == 'C')
-	{
 		add_instance(game, game->collectible, x, y);
-		game->score++;
-	}
 	else if (elem == 'E')
 		add_instance(game, game->exit_img, x, y);
 	else if (elem == 'P')

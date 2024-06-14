@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:54:26 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/12 23:20:16 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:38:16 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	check_one_char(char c, t_game *game)
 		game->collectibles += 1;
 }
 
-int	ft_check_chars(t_game *game)
+void	ft_check_chars(t_game *game)
 {
 	size_t	h;
 	size_t	w;
@@ -44,16 +44,19 @@ int	ft_check_chars(t_game *game)
 	while (h < game->map_height)
 	{
 		w = 0;
-		while (game->map[h][w] != '\n' && game->map[h][w] != '\0')
+		while (game->map[h][w] != '\0')
 		{
 			if (ft_strchr("01CPE", game->map[h][w]) == NULL)
-				return (0);
+				show_error(game, "Map contains invalid char");
 			check_one_char(game->map[h][w], game);
 			w++;
 		}
 		h++;
 	}
-	if (game->collectibles < 1 || game->players != 1 || game->exits != 1)
-		return (0);
-	return (1);
+	if (game->collectibles < 1)
+		show_error(game, "Map doesn't have Collectibles");
+	else if (game->players != 1)
+		show_error(game, "Should be just one player on the map");
+	else if (game->exits != 1)
+		show_error(game, "Should be just one exit on the map");
 }
