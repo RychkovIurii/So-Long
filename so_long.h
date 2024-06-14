@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:14:20 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 11:50:14 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:47:12 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_game
 	int			collectibles;
 }	t_game;
 
-mlx_image_t	*load_image(t_game *game, mlx_t *mlx, const char *path);
 void		load_images(t_game *game);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		get_map_height(t_game *game, const char *filename);

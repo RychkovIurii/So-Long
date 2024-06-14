@@ -6,13 +6,13 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:35:03 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:23:05 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:42:50 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_image_t	*load_image(t_game *game, mlx_t *mlx, const char *path)
+static mlx_image_t	*load_image(t_game *game, mlx_t *mlx, const char *path)
 {
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
