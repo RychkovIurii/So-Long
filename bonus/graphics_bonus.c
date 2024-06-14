@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:35:03 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 16:28:28 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:45:58 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	b_load_images(t_game *game)
 	game->collectible = b_load_image(game,
 			game->mlx, "textures/collectible.png");
 	game->exit_img = b_load_image(game, game->mlx, "textures/exit.png");
-	game->enemy = b_load_image(game, game->mlx, "textures/enemy.png");
+	game->enemy = b_load_image(game, game->mlx, "bonus/enemy.png");
 }
