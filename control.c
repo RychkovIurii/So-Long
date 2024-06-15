@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 11:12:40 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/15 21:00:51 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_game_end_conditions(t_game *game, int x, int y)
 	{
 		if (game->current_score != game->collectibles)
 		{
-			ft_printf("Collect all items first!\n");
+			ft_printf("Collect all ducks first!\n");
 			return (0);
 		}
 		else

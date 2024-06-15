@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:36:12 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 13:25:29 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/15 21:08:37 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	if (!game.mlx)
 		show_error(&game, "Init error");
 	map_handler(&game, argv[1]);
+	ft_printf("Hi! Help Nikolai get an internship\n");
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
 	cleanup_game(&game);

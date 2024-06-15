@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:52:16 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 16:28:39 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/06/15 21:33:46 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	b_check_game_end_conditions(t_game *game, int x, int y)
 	{
 		if (game->current_score != game->collectibles)
 		{
-			ft_printf("Collect all items first!\n");
+			ft_printf("Collect all ducks first!\n");
 			return (0);
 		}
 		else
@@ -63,7 +63,7 @@ static void	b_handle_move(int x, int y, t_game *game)
 		return ;
 	if (game->map[y][x] == '!')
 	{
-		ft_printf("You lose! Don't touch an enemy patrol\n");
+		ft_printf("You lose! Don't touch a blackhole\n");
 		game->gameover = 1;
 		mlx_close_window(game->mlx);
 	}
@@ -93,14 +93,14 @@ void	b_my_keyhook(mlx_key_data_t keydata, void *param)
 	y = game->player_y;
 	if (game->gameover)
 		return ;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(game->mlx);
-	else if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_UP)
 		b_handle_move(x, y - 1, game);
-	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_DOWN)
 		b_handle_move(x, y + 1, game);
-	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_LEFT)
 		b_handle_move(x - 1, y, game);
-	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_RIGHT)
 		b_handle_move(x + 1, y, game);
 }
