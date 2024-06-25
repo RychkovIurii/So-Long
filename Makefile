@@ -24,10 +24,11 @@ MLX_DIR = ./MLX42
 MLX_HEADER = -I $(MLX_DIR)/include
 HEADERS = -I. $(MLX_HEADER) -I$(LIBFT_DIR)
 LIBMLX = $(MLX_DIR)/build/libmlx42.a
-LIBGLFW = /Users/irychkov/.brew/Cellar/glfw/3.4/lib/libglfw.3.dylib
+#LIBGLFW = /Users/irychkov/.brew/Cellar/glfw/3.4/lib/libglfw.3.dylib
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-OSFLAGS = -framework Cocoa -framework OpenGL -framework IOKit
+#OSFLAGS = $(LIBGLFW) -framework Cocoa -framework OpenGL -framework IOKit
+OSFLAGS = -ldl -lglfw -pthread -lm
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
 
@@ -49,10 +50,10 @@ $(LIBFT):
 	@echo "Compiling: $<"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBMLX) $(LIBGLFW) $(LIBFT) $(OSFLAGS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBMLX) $(LIBFT) $(OSFLAGS) -o $(NAME)
 
 $(NAMEBONUS): $(BONUS_OBJS)
-	@$(CC) $(BONUS_OBJS) $(LIBMLX) $(LIBGLFW) $(LIBFT) $(OSFLAGS) -o $(NAMEBONUS)
+	@$(CC) $(BONUS_OBJS) $(LIBMLX) $(LIBFT) $(OSFLAGS) -o $(NAMEBONUS)
 
 clean:
 	@rm -rf $(OBJS) $(BONUS_OBJS)
