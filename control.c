@@ -16,8 +16,8 @@ static void	update_map_and_images(int x, int y, t_game *game)
 {
 	game->map[game->player_y][game->player_x] = '0';
 	game->map[y][x] = 'P';
-	game->player->instances[0].x = x * TILE_SIZE;
-	game->player->instances[0].y = y * TILE_SIZE;
+	game->player->instances[0].x = x * game->tilesize;
+	game->player->instances[0].y = y * game->tilesize;
 }
 
 static void	collect_item(t_game *game, int x, int y)
@@ -28,8 +28,8 @@ static void	collect_item(t_game *game, int x, int y)
 	game->current_score++;
 	while (i < game->collectible->count)
 	{
-		if (game->collectible->instances[i].x == x * TILE_SIZE
-			&& game->collectible->instances[i].y == y * TILE_SIZE)
+		if (game->collectible->instances[i].x == x * game->tilesize
+			&& game->collectible->instances[i].y == y * game->tilesize)
 		{
 			game->collectible->instances[i].enabled = false;
 			break ;

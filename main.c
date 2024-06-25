@@ -27,9 +27,6 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nExtension. File %s must end with .ber\n", argv[1]);
 		return (1);
 	}
-	game.mlx = mlx_init(1024, 768, "So Long", true);
-	if (!game.mlx)
-		show_error(&game, "Init error");
 	map_handler(&game, argv[1]);
 	ft_printf("Hi! Help Nikolai get an internship\n");
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
