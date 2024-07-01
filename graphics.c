@@ -24,9 +24,9 @@ static void count_tile_size(t_game *game)
 	if (tile_w < min_size || tile_h < min_size)
 		show_error(game, "Map is too big, try to pass smaller map");
 	if (tile_h > tile_w)
-		game->tilesize = TILE_SIZE * tile_w;
+		game->tilesize = tile_w;
 	else
-		game->tilesize = TILE_SIZE * tile_h;
+		game->tilesize = tile_h;
 }
 
 static mlx_image_t	*load_image(t_game *game, mlx_t *mlx, const char *path)
