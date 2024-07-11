@@ -79,6 +79,7 @@ static void	b_handle_move(int x, int y, t_game *game)
 	game->player_x = x;
 	game->player_y = y;
 	game->steps++;
+	anim_blackhole(game);
 	ft_printf("Steps: %d\n", game->steps);
 }
 

@@ -28,6 +28,8 @@ void	b_cleanup_game(t_game *game)
 			mlx_delete_image(game->mlx, game->exit_img);
 		if (game->enemy)
 			mlx_delete_image(game->mlx, game->enemy);
+		if (game->enemy2)
+			mlx_delete_image(game->mlx, game->enemy2);
 		if (game->player)
 			mlx_delete_image(game->mlx, game->player);
 		mlx_terminate(game->mlx);
@@ -61,4 +63,25 @@ void	b_map_handler(t_game *game, char *filename)
 	player_start = (t_position){game->player_x, game->player_y};
 	if (!b_validate_path(game, player_start))
 		b_show_error(game, "No valid path");
+}
+
+void	anim_blackhole(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->enemies)
+	{
+		if (game->enemy->instances[i].enabled == false)
+		{
+			game->enemy2->instances[i].enabled = false;
+			game->enemy->instances[i].enabled = true;
+		}
+		else
+		{
+			game->enemy2->instances[i].enabled = true;
+			game->enemy->instances[i].enabled = false;
+		}
+		i++;
+	}
 }
