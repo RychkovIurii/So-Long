@@ -24,7 +24,13 @@ static void	b_handle_map_element(t_game *game, char elem, size_t x, size_t y)
 	if (elem == '1')
 		b_add_instance(game, game->wall, x, y);
 	else if (elem == '!')
+	{
 		b_add_instance(game, game->enemy, x, y);
+		b_add_instance(game, game->enemy1, x, y);
+		b_add_instance(game, game->enemy2, x, y);
+		game->enemy->instances[0].enabled = false;
+		game->enemy2->instances[0].enabled = false;
+	}
 	else if (elem == '0')
 		b_add_instance(game, game->floor, x, y);
 	else if (elem == 'C')

@@ -62,4 +62,6 @@ void	b_load_images(t_game *game)
 			game->mlx, "textures/collectible.png");
 	game->exit_img = b_load_image(game, game->mlx, "textures/exit.png");
 	game->enemy = b_load_image(game, game->mlx, "bonus/enemy.png");
+	game->enemy1 = b_load_image(game, game->mlx, "bonus/enemy1.png");
+	game->enemy2 = b_load_image(game, game->mlx, "bonus/enemy2.png");
 }
