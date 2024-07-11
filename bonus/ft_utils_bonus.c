@@ -31,7 +31,6 @@ void	b_cleanup_game(t_game *game)
 		if (game->player)
 			mlx_delete_image(game->mlx, game->player);
 		mlx_terminate(game->mlx);
-		game->mlx = NULL;
 	}
 	i = 0;
 	if (game->map)

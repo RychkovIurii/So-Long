@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void count_tile_size(t_game *game)
+static void	count_tile_size(t_game *game)
 {
 	float	tile_w;
 	float	tile_h;
@@ -41,8 +41,8 @@ static mlx_image_t	*load_image(t_game *game, mlx_t *mlx, const char *path)
 	mlx_delete_texture(texture);
 	if (!image)
 		show_error(game, "Failed to create image");
-	if (image->width != (uint32_t)game->tilesize ||
-			image->height != (uint32_t)game->tilesize)
+	if (image->width != (uint32_t)game->tilesize
+		|| image->height != (uint32_t)game->tilesize)
 		if (!mlx_resize_image(image, game->tilesize, game->tilesize))
 			show_error(game, "Failed to resize image");
 	return (image);
@@ -52,7 +52,7 @@ void	load_images(t_game *game)
 {
 	count_tile_size(game);
 	game->mlx = mlx_init(game->map_width * game->tilesize,
-		game->map_height * game->tilesize, "So Long", true);
+			game->map_height * game->tilesize, "So Long", true);
 	if (!game->mlx)
 		show_error(game, "Init error");
 	game->player = load_image(game, game->mlx, "textures/player.png");
@@ -61,5 +61,3 @@ void	load_images(t_game *game)
 	game->collectible = load_image(game, game->mlx, "textures/collectible.png");
 	game->exit_img = load_image(game, game->mlx, "textures/exit.png");
 }
-
-

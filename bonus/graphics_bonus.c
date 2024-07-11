@@ -12,7 +12,7 @@
 
 #include "so_long_bonus.h"
 
-static void b_count_tile_size(t_game *game)
+static void	b_count_tile_size(t_game *game)
 {
 	float	tile_w;
 	float	tile_h;
@@ -41,8 +41,8 @@ static mlx_image_t	*b_load_image(t_game *game, mlx_t *mlx, const char *path)
 	mlx_delete_texture(texture);
 	if (!image)
 		b_show_error(game, "Failed to create image");
-	if (image->width != (uint32_t)game->tilesize ||
-			image->height != (uint32_t)game->tilesize)
+	if (image->width != (uint32_t)game->tilesize
+		|| image->height != (uint32_t)game->tilesize)
 		if (!mlx_resize_image(image, game->tilesize, game->tilesize))
 			b_show_error(game, "Failed to resize image");
 	return (image);
@@ -52,7 +52,7 @@ void	b_load_images(t_game *game)
 {
 	b_count_tile_size(game);
 	game->mlx = mlx_init(game->map_width * game->tilesize,
-		game->map_height * game->tilesize, "So Long", true);
+			game->map_height * game->tilesize, "So Long", true);
 	if (!game->mlx)
 		b_show_error(game, "Init error");
 	game->player = b_load_image(game, game->mlx, "textures/player.png");
