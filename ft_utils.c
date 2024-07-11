@@ -28,6 +28,8 @@ void	cleanup_game(t_game *game)
 			mlx_delete_image(game->mlx, game->exit_img);
 		if (game->player)
 			mlx_delete_image(game->mlx, game->player);
+		mlx_terminate(game->mlx);
+		game->mlx = NULL;
 	}
 	i = 0;
 	if (game->map)
@@ -37,8 +39,6 @@ void	cleanup_game(t_game *game)
 		free(game->map);
 		game->map = NULL;
 	}
-	mlx_terminate(game->mlx);
-	game->mlx = NULL;
 }
 
 void	show_error(t_game *game, char *message)

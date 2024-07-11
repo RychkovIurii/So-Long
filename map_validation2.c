@@ -56,7 +56,7 @@ void	ft_check_chars(t_game *game)
 	if (game->collectibles < 1)
 		show_error(game, "Map doesn't have Collectibles");
 	else if (game->players != 1)
-		show_error(game, "Should be just one player on the map");
+		show_error(game, "Should be one player on the map");
 	else if (game->exits != 1)
-		show_error(game, "Should be just one exit on the map");
+		show_error(game, "Should be one exit on the map");
 }

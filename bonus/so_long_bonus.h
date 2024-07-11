@@ -18,7 +18,10 @@
 # include "libft.h"
 # include <fcntl.h>
 
-# define TILE_SIZE 64
+# define SCREEN_W 3200
+# define SCREEN_H 1800
+# define TILE_SIZE 100
+# define MIN_SCALE 0.2
 
 typedef struct s_position
 {
@@ -43,6 +46,7 @@ typedef struct s_game
 	char		**map;
 	size_t		map_width;
 	size_t		map_height;
+	int			tilesize;
 	int			steps;
 	int			gameover;
 	int			exits;
