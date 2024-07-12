@@ -100,24 +100,3 @@ void	anim_blackhole(t_game *game)
 		i++;
 	}
 }
-
-void	anim_blackhole(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->enemies)
-	{
-		if (game->enemy->instances[i].enabled == false)
-		{
-			game->enemy2->instances[i].enabled = false;
-			game->enemy->instances[i].enabled = true;
-		}
-		else
-		{
-			game->enemy2->instances[i].enabled = true;
-			game->enemy->instances[i].enabled = false;
-		}
-		i++;
-	}
-}
