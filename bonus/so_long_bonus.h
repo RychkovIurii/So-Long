@@ -70,5 +70,6 @@ void		b_show_error(t_game *game, char *message);
 void		b_cleanup_game(t_game *game);
 void		b_map_handler(t_game *game, char *filename);
 void		anim_blackhole(t_game *game);
+void		anim_blackhole(t_game *game);
 
 #endif
