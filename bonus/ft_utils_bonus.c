@@ -26,10 +26,10 @@ static void	cleanup_imgs(t_game *game)
 			mlx_delete_image(game->mlx, game->exit_img);
 		if (game->enemy)
 			mlx_delete_image(game->mlx, game->enemy);
-		if (game->enemy2)
-			mlx_delete_image(game->mlx, game->enemy2);
 		if (game->enemy1)
 			mlx_delete_image(game->mlx, game->enemy1);
+		if (game->enemy2)
+			mlx_delete_image(game->mlx, game->enemy2);
 		if (game->player)
 			mlx_delete_image(game->mlx, game->player);
 		mlx_terminate(game->mlx);
