@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:18:23 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/14 16:28:09 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:33:36 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	b_ft_validate_rectangle(t_game *game)
 void	b_ft_validate_walls(t_game *game)
 {
 	if (!b_ft_validate_rectangle(game))
-		b_show_error(game, "Map isn't a rectangle");
+		b_show_error(game, "Map isn't a rectangle or has an extra new line");
 	if (!b_ft_validate_side_walls(game))
 		b_show_error(game, "Map doesn't have a wall around");
 	else if (!b_ft_valid_top_wall(game) || !b_ft_valid_bottom_wall(game))

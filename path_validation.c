@@ -6,7 +6,7 @@
 /*   By: irychkov <irychkov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:28:09 by irychkov          #+#    #+#             */
-/*   Updated: 2024/06/13 13:25:53 by irychkov         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:19:53 by irychkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ static int	explore_path(t_game *game, char **temp_map, t_position position)
 	else if (temp_map[position.y][position.x] == 'C')
 		collect++;
 	else if (temp_map[position.y][position.x] == 'E')
+	{
 		exit_found = 1;
+		return (0);
+	}
 	temp_map[position.y][position.x] = '1';
 	explore_path(game, temp_map, (t_position){position.x + 1, position.y});
 	explore_path(game, temp_map, (t_position){position.x - 1, position.y});
